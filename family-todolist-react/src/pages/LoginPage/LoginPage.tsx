@@ -45,11 +45,14 @@ function LoginPage() {
         The curly braces around sessionToken means we are extracting just the sessionToken
         property from the response object (called destructuring).
       */
-      const { sessionToken } = await response.json();
+      //const { sessionToken } = await response.json();
+
+      const data = await response.json();
 
       // Temporarily save the sessionToken in sessionStorage (cleared on browser close).
-      sessionStorage.setItem('sessionToken', sessionToken);
+      sessionStorage.setItem('sessionToken', data.token);
       sessionStorage.setItem("username", username);
+      //       sessionStorage.setItem('userId', data.userId); TODO: may need this may not. alot of the athentacation of lists should be done on backend with the session token to assing list to users but we will see
 
       // Redirect user to the /lists page after successful login.
       navigate('/lists');

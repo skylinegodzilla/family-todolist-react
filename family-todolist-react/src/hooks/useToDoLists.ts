@@ -14,19 +14,18 @@ export function useToDoLists() {
 
         const response = await fetch("/api/todolists", {
           headers: {
-            Authorization: `Bearer ${sessionToken}`,
+            Authorization: sessionToken, // no 'Bearer '
+            "Content-Type": "application/json",
           },
         });
 
         if (!response.ok) throw new Error("Failed to fetch to-do lists");
-        const data = await response.json();
+
+        const data: ToDoList[] = await response.json();
         setLists(data);
       } catch (err: unknown) {
-        if (err instanceof Error) {
-          setError(err.message);
-        } else {
-          setError("Unknown error");
-        }
+        if (err instanceof Error) setError(err.message);
+        else setError("Unknown error");
       } finally {
         setLoading(false);
       }
