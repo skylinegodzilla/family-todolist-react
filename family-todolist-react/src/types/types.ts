@@ -1,6 +1,7 @@
 export type ToDoItem = {
   itemId: number;
   title: string;
+  description: string;
   completed: boolean;
   dueDate: string; // todo: If you later want to parse this into a Date, we can update this.
 };

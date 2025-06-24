@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import './LoginPage.css';
 
 function LoginPage() {
   /* 
@@ -48,6 +49,7 @@ function LoginPage() {
 
       // Temporarily save the sessionToken in sessionStorage (cleared on browser close).
       sessionStorage.setItem('sessionToken', sessionToken);
+      sessionStorage.setItem("username", username);
 
       // Redirect user to the /lists page after successful login.
       navigate('/lists');
@@ -65,36 +67,43 @@ function LoginPage() {
   };
 
   return (
-    <div className="page">
-      <h1>Login</h1>
-      {/* 
-        The form element listens for submit events and calls handleLogin when submitted.
-        Inputs update their respective state values on every keystroke using onChange handlers.
-      */}
-      <form onSubmit={handleLogin}>
-        <label>
-          Username:
-          <input
-            value={username}
-            onChange={e => setUsername(e.target.value)} // e is the event object from the input change
-            required
-          />
-        </label>
-        <br />
-        <label>
-          Password:
-          <input
-            type="password"
-            value={password}
-            onChange={e => setPassword(e.target.value)} // Update password state as user types
-            required
-          />
-        </label>
-        <br />
-        <button type="submit">Login</button>
-        {/* Show an error message in red if login fails */}
-        {error && <p style={{ color: 'red' }}>{error}</p>}
-      </form>
+    <div className="center-page">
+      <div className="page">
+        <h2>Family Checklist</h2>
+      </div>
+      <div className="page">
+        <h1>Login</h1>
+        {/* 
+          The form element listens for submit events and calls handleLogin when submitted.
+          Inputs update their respective state values on every keystroke using onChange handlers.
+        */}
+        <form onSubmit={handleLogin}>
+          <label className="gradient-label">
+            Username:
+            <input
+              value={username}
+              onChange={e => setUsername(e.target.value)}
+              required
+            />
+          </label>
+          <label className="gradient-label">
+            Password:
+            <input
+              type="password"
+              value={password}
+              onChange={e => setPassword(e.target.value)}
+              required
+            />
+          </label>
+
+          {/* Error message placeholder */}
+          <p className="error-message" aria-live="assertive">
+            {error || '\u00A0' /* non-breaking space to keep height */}
+          </p>
+
+          <button type="submit">Login</button>
+        </form>
+      </div>
     </div>
   );
 }

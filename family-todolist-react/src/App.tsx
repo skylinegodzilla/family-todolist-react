@@ -5,10 +5,10 @@
 
 import { Routes, Route, Navigate } from 'react-router-dom';
 
-import LoginPage from './pages/LoginPage.tsx';
-import ToDoListsPage from './pages/ToDoListsPage.tsx';
-import ListDetailPage from './pages/ListDetailPage.tsx';
-import AdminPage from './pages/AdminPage.tsx';
+import LoginPage from './pages/LoginPage/LoginPage.tsx';
+import ToDoListsPage from './pages/ToDoListPage/ToDoListsPage.tsx';
+import ListDetailPage from './pages/ListDetailPage/ListDetailPage.tsx';
+import AdminPage from './pages/AdminPage/AdminPage.tsx';
 
 function App() {
   // TODO: this is all old code from the poc keping it as it might be usefull for learning from till i get better at react

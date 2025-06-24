@@ -24,15 +24,18 @@ a:hover {
 
 body {
   margin: 0;
-  display: flex;
-  place-items: center;
   min-width: 320px;
   min-height: 100vh;
 }
 
 h1 {
   font-size: 3.2em;
-  line-height: 1.1;
+  line-height: 0;
+}
+
+h2 {
+  font-size: 2em;
+  line-height: 0;
 }
 
 button {
@@ -65,4 +68,14 @@ button:focus-visible {
   button {
     background-color: #f9f9f9;
   }
+}
+
+/* Utility class for centered layout */
+.center-page {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  gap: 2rem; /* gap between componints in this page */
 }
