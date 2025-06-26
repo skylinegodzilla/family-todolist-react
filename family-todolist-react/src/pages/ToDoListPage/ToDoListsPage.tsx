@@ -8,7 +8,7 @@ import "./ToDoListsPage.css";
 const ToDoListsPage: React.FC = () => {
   // Navigation
   const navigate = useNavigate();
-  const { lists, loading, error, createList, updateList } = useToDoLists();
+  const { lists, loading, error, createList, updateList, deleteList } = useToDoLists();
 
   // Fetch user name from the sessionStorage
   const username =
@@ -68,12 +68,12 @@ const handleSubmit = async () => {
       <div className="todo-header">
         <div className="todo-left">Family To-Do List Project</div>
         <h1 className="todo-title">Your To-Do Lists</h1>
-        <button onClick={handleLogout} className="todo-logout-btn">
+        <button onClick={handleLogout} className="logoutButton">
           Logout {username}
         </button>
       </div>
 
-      <div className="todo-container center-page">
+      <div className="todo-container">
         {loading && <p className="todo-loading">Loading your to-do lists...</p>}
         {error && <p className="todo-error">⚠️ {error}</p>}
 
@@ -92,57 +92,88 @@ const handleSubmit = async () => {
                       <div className="todo-card-meta">
                         ✅ {completed}/{list.items.length} items completed
                       </div>
-                      <button
-                        className="todo-view-btn"
-                        onClick={() => navigate(`/lists/${list.listId}`)}
-                      >
-                        View Items
-                      </button>
-                      <button
-                        className="todo-edit-btn"
-                        onClick={() => {
-                          setTitle(list.title);
-                          setDescription(list.description);
-                          setEditingListId(list.listId);
-                          setShowForm(true);
-                        }}
-                      >
-                        Edit
-                      </button>
+                      <div className="todo-card-actions">
+                        <button
+                          className="defaultPrimaryButton"
+                          onClick={() => navigate(`/lists/${list.listId}`)}
+                        >
+                          View Items
+                        </button>
+                        <button
+                          className="defaultSecondaryButton"
+                          onClick={() => {
+                            setTitle(list.title);
+                            setDescription(list.description);
+                            setEditingListId(list.listId);
+                            setShowForm(true);
+                          }}
+                        >
+                          Edit
+                        </button>
+
+                        <button
+                          className="defaultNoButton"
+                          onClick={async () => {
+                            const confirmed = window.confirm(`Are you sure you want to delete "${list.title}"? This action cannot be undone.`); // Popup window
+                            if (!confirmed) return;
+                            try {
+                              await deleteList(list.listId);
+                            } catch (error) {
+                              alert(error instanceof Error ? error.message : "Failed to delete list");
+                            }
+                          }}
+                        >
+                          Delete
+                        </button>
+                      </div>
                     </div>
                   );
                 })}
               </div>
             )}
 
-            <button onClick={() => setShowForm(true)} className="todo-create-btn">
+            <button onClick={() => setShowForm(true)} className="todo-create-btn defaultPrimaryButton ">
               ➕ New List
             </button>
             
             {showForm && (
-              <div className="todo-form">
-                <h2>Create a New To-Do List</h2>
-                {createError && <p className="todo-error">⚠️ {createError}</p>}
+              <div 
+                className="todo-modal-overlay"
+                onClick={() => !creating && setShowForm(false)} // close when clicking outside form
+              >
+                <div
+                  className="todo-modal-form"
+                  onClick={e => e.stopPropagation()} // prevent closing when clicking inside form
+                >
+                  <h2>{editingListId !== null ? "Edit To-Do List" : "Create a New To-Do List"}</h2>
+                  {createError && <p className="todo-error">⚠️ {createError}</p>}
 
-                <input
-                  type="text"
-                  placeholder="Title"
-                  value={title}
-                  onChange={(e) => setTitle(e.target.value)}
-                  disabled={creating}
-                />
-                <textarea
-                  placeholder="Description (optional)"
-                  value={description}
-                  onChange={(e) => setDescription(e.target.value)}
-                  disabled={creating}
-                />
-                <button onClick={handleSubmit} disabled={creating}>
-                  {creating ? (editingListId !== null ? "Saving..." : "Creating...") : (editingListId !== null ? "Save Changes" : "Create")}
-                </button>
-                <button onClick={() => setShowForm(false)} disabled={creating}>
-                  Cancel
-                </button>
+                  <input
+                    type="text"
+                    placeholder="Title"
+                    value={title}
+                    onChange={(e) => setTitle(e.target.value)}
+                    disabled={creating}
+                  />
+                  <textarea
+                    placeholder="Description (optional)"
+                    value={description}
+                    onChange={(e) => setDescription(e.target.value)}
+                    disabled={creating}
+                  />
+
+                  <div className="todo-modal-buttons">
+                    <button className="defaultPrimaryButton" 
+                      onClick={handleSubmit} disabled={creating}>
+                      {creating ? (editingListId !== null ? "Saving..." : "Creating...") : (editingListId !== null ? "Save Changes" : "Create")}
+                    </button>
+
+                    <button className="defaultNoButton"
+                      onClick={() => !creating && setShowForm(false)} disabled={creating}>
+                      Cancel
+                    </button>
+                  </div>
+                </div>
               </div>
             )}
           </>

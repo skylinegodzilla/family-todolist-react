@@ -79,3 +79,118 @@ button:focus-visible {
   height: 100vh;
   gap: 2rem; /* gap between componints in this page */
 }
+
+.defaultPrimaryButton {
+  background-color: #05C;
+  color: white;
+  border: none;
+  padding: 0.4rem 0.8rem;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: 500;
+  transition: background-color 0.2s ease;
+    /* Inner shadow */
+  box-shadow: inset 0 2px 2px rgba(0, 0, 0, 0.4),
+              inset 0 -2px 1px rgba(255, 255, 255, 0.1);
+}
+
+.defaultPrimaryButton:hover {
+  background-color: #27D;
+      /* Inner shadow */
+  box-shadow: inset 0 0px 0px rgba(0, 0, 0, 0.4),
+              inset 0 0px 0px rgba(255, 255, 255, 0.1);
+}
+
+.defaultPrimaryButton:active {
+  background-color: #05C;
+      /* Inner shadow */
+  box-shadow: inset 0 5px 2px rgba(0, 0, 0, 0.4),
+              inset 0 5px 2px rgba(255, 255, 255, 0.1);
+}
+
+.defaultPrimaryButton:focus {
+  outline: none;
+}
+
+.defaultSecondaryButton {
+  background-color: #D80;
+  color: white;
+  border: none;
+  padding: 0.4rem 0.8rem;
+  cursor: pointer;
+  margin-left: 0.5rem;
+  border-radius: 6px;
+    /* Inner shadow */
+  box-shadow: inset 0 2px 2px rgba(0, 0, 0, 0.4),
+              inset 0 -2px 1px rgba(255, 255, 255, 0.1);
+}
+
+.defaultSecondaryButton:hover {
+  background-color: #FA0;
+        /* Inner shadow */
+  box-shadow: inset 0 0px 0px rgba(0, 0, 0, 0.4),
+              inset 0 0px 0px rgba(255, 255, 255, 0.1);
+}
+
+.defaultSecondaryButton:active {
+  background-color: #D80;
+      /* Inner shadow */
+  box-shadow: inset 0 5px 2px rgba(0, 0, 0, 0.4),
+              inset 0 5px 2px rgba(255, 255, 255, 0.1);
+}
+
+.defaultSecondaryButton:focus {
+  outline: none;
+}
+
+.defaultNoButton {
+  background-color: #C23;
+  color: white;
+  border: none;
+  padding: 0.4rem 0.8rem;
+  cursor: pointer;
+  margin-left: 0.5rem;
+  border-radius: 6px;
+        /* Inner shadow */
+  box-shadow: inset 0 2px 2px rgba(0, 0, 0, 0.4),
+              inset 0 -2px 1px rgba(255, 255, 255, 0.1);
+}
+
+.defaultNoButton:hover {
+  background-color: #C43;
+    /* Inner shadow */
+  box-shadow: inset 0 0px 0px rgba(0, 0, 0, 0.4),
+              inset 0 0px 0px rgba(255, 255, 255, 0.1);
+}
+
+.defaultNoButton:active {
+  background-color: #D80;
+      /* Inner shadow */
+  box-shadow: inset 0 5px 2px rgba(0, 0, 0, 0.4),
+              inset 0 5px 2px rgba(255, 255, 255, 0.1);
+}
+
+.defaultNoButton:focus {
+  outline: none;
+}
+
+.logoutButton {
+  text-align: right;
+  background-color: #444;
+  color: white;
+  border: none;
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+  font-size: 1rem;
+  border-radius: 6px;
+  transition: background-color 0.2s ease;
+  flex-shrink: 0; /* prevent it from shrinking in tight layouts */
+  box-shadow: inset 0 0px 0px rgba(0, 0, 0, 0.4),
+              inset 0 0px 0px rgba(255, 255, 255, 0.1);
+}
+
+.logoutButton:hover {
+  background-color: #c62828;
+    box-shadow: inset 0 2px 2px rgba(0, 0, 0, 0.4),
+              inset 0 -2px 1px rgba(255, 255, 255, 0.1);
+}

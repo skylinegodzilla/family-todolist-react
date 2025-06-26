@@ -52,7 +52,6 @@ function LoginPage() {
       // Temporarily save the sessionToken in sessionStorage (cleared on browser close).
       sessionStorage.setItem('sessionToken', data.token);
       sessionStorage.setItem("username", username);
-      sessionStorage.setItem('userId', data.userId); // TODO: Change the authentacation to be done on backend with the session token to assing list to users but we will see
 
       // Redirect user to the /lists page after successful login.
       navigate('/lists');
@@ -104,7 +103,10 @@ function LoginPage() {
             {error || '\u00A0' /* non-breaking space to keep height */}
           </p>
 
-          <button type="submit">Login</button>
+          <button className='defaultPrimaryButton'
+            type="submit">
+            Login
+          </button>
         </form>
       </div>
     </div>
