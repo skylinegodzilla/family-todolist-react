@@ -52,7 +52,7 @@ function LoginPage() {
       // Temporarily save the sessionToken in sessionStorage (cleared on browser close).
       sessionStorage.setItem('sessionToken', data.token);
       sessionStorage.setItem("username", username);
-      //       sessionStorage.setItem('userId', data.userId); TODO: may need this may not. alot of the athentacation of lists should be done on backend with the session token to assing list to users but we will see
+      sessionStorage.setItem('userId', data.userId); // TODO: Change the authentacation to be done on backend with the session token to assing list to users but we will see
 
       // Redirect user to the /lists page after successful login.
       navigate('/lists');
