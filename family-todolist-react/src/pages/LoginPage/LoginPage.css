@@ -1,0 +1,68 @@
+.page {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2rem;
+  width: 100%;
+  max-width: 400px;
+  padding: 1rem;
+
+  /* 👇 Visual polish */
+  background-color: rgba(255, 255, 255, 0.05);
+  border: 3px solid rgba(255, 255, 255, 0.2);
+  border-radius: 24px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+}
+
+form {
+  width: 300px;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+label {
+  display: flex;
+  flex-direction: column;
+  font-weight: bold;
+  color: #0099FF
+}
+
+.gradient-label {
+  font-weight: bold;
+  font-size: 1rem;
+  
+  background: linear-gradient(70deg, #FFAA00 0%, #FFF 15%, #00AAFF 20%);
+  -webkit-background-clip: text;
+
+  /* For Firefox */
+  background-clip: text;
+  color: transparent;
+
+  text-shadow: 0 1px 1px rgba(0, 0, 0, 0.2);
+}
+
+input {
+  padding: 0.5rem;
+  font-size: 1rem;
+  margin-top: 0.25rem;
+  width: 100%;
+  color: #ffffff;
+  box-sizing: border-box;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  background-color: #555;
+}
+
+button {
+  align-self: center;
+  margin-top: 0.5rem;
+}
+
+.error-message {
+  color: #A60;
+  text-align: center;
+  margin: 0.25rem 0;      /* small vertical margin */
+  min-height: 1.2em;      /* reserve about one line of text height */
+  font-weight: 600;
+}
