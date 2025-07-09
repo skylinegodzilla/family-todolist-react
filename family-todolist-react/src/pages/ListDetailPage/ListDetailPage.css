@@ -1,12 +1,20 @@
+:root {
+  --badge-green: #4caf50;
+  --badge-bg-light: rgba(76, 175, 80, 0.1);
+  --overdue-red: #f44336;
+}
+
 .todo-item-card {
+  position: relative;
   display: flex;
   justify-content: space-between;
   align-items: center;
   background-color: #fff;
-  color: #000; /* MAKE TEXT VISIBLE */
+  color: #000;
   padding: 1rem;
   border-radius: 10px;
   box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  overflow: hidden; /* This keeps the badge from floating outside */
 }
 
 .todo-item-left {
@@ -17,37 +25,113 @@
   overflow: hidden;
 }
 
-.todo-item-checkbox {
-  margin-top: 0.3rem;
+.todo-item-checkbox-wrapper {
+  position: relative;
+  width: 24px;
+  height: 24px;
   flex-shrink: 0;
-  width: 20px;
-  height: 20px;
+}
+
+.todo-item-checkbox {
+  opacity: 0;
+  width: 24px;
+  height: 24px;
+  margin: 0;
+}
+
+.custom-checkbox {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 24px;
+  height: 24px;
+  background-color: #fff;
+  border: 2px solid #666;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.2s, border-color 0.2s;
+}
+
+.todo-item-checkbox:checked + .custom-checkbox {
+  background-color: var(--badge-green);
+  border-color: var(--badge-green);
+}
+
+.custom-checkbox::after {
+  content: "";
+  position: absolute;
+  left: 7px;
+  top: 2px;
+  width: 6px;
+  height: 12px;
+  border: solid white;
+  border-width: 0 2px 2px 0;
+  transform: rotate(45deg);
+  opacity: 0;
+  transition: opacity 0.2s;
+}
+
+.todo-item-checkbox:checked + .custom-checkbox::after {
+  opacity: 1;
 }
 
 .todo-item-title {
   font-size: 1.2rem;
   font-weight: bold;
-  color: #111; /* Visible heading */
-  margin: 0 0 0.25rem 0;
+  margin: 0;
+  color: #111;
 }
 
 .todo-item-desc {
   font-size: 0.95rem;
-  color: #333; /* Visible description */
-  margin: 0;
+  color: #333;
+  margin: 0.25rem 0;
+    white-space: pre-wrap; /* This is the key */
+  word-wrap: break-word;
 }
 
 .todo-item-meta {
   font-size: 0.85rem;
   color: #777;
-  margin-top: 0.5rem;
 }
 
+/* Completed badge under checkbox, vertical */
+.todo-item-badge-vertical {
+  position:absolute;
+  top: 51%;
+  left:36px;
+  transform: rotate(-45deg);
+  transform-origin: left;
+  font-size: 2.5rem;
+  font-weight: 800;
+  color: rgba(48, 163, 19, 0.5);
+  z-index: 2;
+}
+
+/* Darken completed items */
+.todo-item-completed {
+  background-color: #f0f0f0;
+}
+
+/* Overdue items */
+.todo-item-overdue {
+  border: 1px solid var(--overdue-red);
+  background-color: #ffe6e6;
+}
+
+/* Title row to hold title and optional badge */
+.todo-item-title-row {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+/* Center page header title */
 .todo-title {
   position: absolute;
   left: 50%;
   transform: translateX(-50%);
   font-size: 1.5rem;
   margin: 0;
-  color: #fff; /* ensure title is readable on dark header */
+  color: #fff;
 }
