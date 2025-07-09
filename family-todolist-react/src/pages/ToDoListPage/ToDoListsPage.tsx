@@ -95,7 +95,7 @@ const handleSubmit = async () => {
                       <div className="todo-card-actions">
                         <button
                           className="defaultPrimaryButton"
-                          onClick={() => navigate(`/lists/${list.listId}`)}
+                          onClick={() => navigate(`/lists/${list.listId}`, { state: { list } })}
                         >
                           View Items
                         </button>

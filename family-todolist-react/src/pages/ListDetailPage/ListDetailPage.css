@@ -1,0 +1,53 @@
+.todo-item-card {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #fff;
+  color: #000; /* MAKE TEXT VISIBLE */
+  padding: 1rem;
+  border-radius: 10px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.todo-item-left {
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+  flex: 1;
+  overflow: hidden;
+}
+
+.todo-item-checkbox {
+  margin-top: 0.3rem;
+  flex-shrink: 0;
+  width: 20px;
+  height: 20px;
+}
+
+.todo-item-title {
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: #111; /* Visible heading */
+  margin: 0 0 0.25rem 0;
+}
+
+.todo-item-desc {
+  font-size: 0.95rem;
+  color: #333; /* Visible description */
+  margin: 0;
+}
+
+.todo-item-meta {
+  font-size: 0.85rem;
+  color: #777;
+  margin-top: 0.5rem;
+}
+
+.todo-title {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 1.5rem;
+  margin: 0;
+  color: #fff; /* ensure title is readable on dark header */
+}

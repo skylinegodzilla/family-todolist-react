@@ -12,3 +12,10 @@ export type ToDoList = {
   description: string;
   items: ToDoItem[];
 };
+
+export type ToDoItemRequestDTO = {
+  title: string;
+  description: string;
+  completed: boolean;
+  dueDate: string;
+};
