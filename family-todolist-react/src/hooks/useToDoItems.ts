@@ -25,6 +25,8 @@ export function useToDoItems(listId: number, initialList: ToDoList | null = null
 
       const items: ToDoItem[] = await response.json();
 
+      console.log("Fetched items in this order:", items.map(i => i.itemId));  //TODO: Remove debug code
+
       setList((prev) =>
         prev
           ? { ...prev, items }
@@ -83,7 +85,7 @@ export function useToDoItems(listId: number, initialList: ToDoList | null = null
     await fetchItems();
   };
 
-  // Toggle completion (just a shortcut to updateItem)
+  // Toggle completion
   const toggleItemCompletion = async (itemId: number, completed: boolean) => {
     const item = list?.items.find((i) => i.itemId === itemId);
     if (!item) throw new Error("Item not found");
@@ -113,6 +115,25 @@ export function useToDoItems(listId: number, initialList: ToDoList | null = null
     await fetchItems();
   };
 
+  // Reorder items
+  const reorderItems = async (orderedItemIds: number[]) => {
+    const token = sessionStorage.getItem("sessionToken");
+    if (!token) throw new Error("Missing session token");
+
+    const response = await fetch(`/api/todolists/${listId}/items/reorder`, {
+      method: "PUT",
+      headers: {
+        Authorization: token,
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(orderedItemIds),
+    });
+
+    if (!response.ok) throw new Error("Failed to reorder items");
+
+    await fetchItems();
+  };
+
   useEffect(() => {
     fetchItems();
   }, [fetchItems]);
@@ -126,5 +147,6 @@ export function useToDoItems(listId: number, initialList: ToDoList | null = null
     updateItem,
     toggleItemCompletion,
     deleteItem,
+    reorderItems,
   };
 }
