@@ -112,8 +112,6 @@ useEffect(() => {
       </div>
 
       <div className="todo-container">
-        {loading && <p className="todo-loading">Loading items...</p>}
-        {error && <p className="todo-error">⚠️ {error}</p>}
 
         <DragDropContext onDragEnd={handleDragEnd}>
           <Droppable droppableId="todo-items">
@@ -165,6 +163,9 @@ useEffect(() => {
             )}
           </Droppable>
         </DragDropContext>
+
+        {loading && <p className="todo-loading">Loading items...</p>}
+        {error && <p className="todo-error">⚠️ {error}</p>}
 
         <button onClick={() => setShowForm(true)} className="todo-create-btn defaultPrimaryButton">➕ New Item</button>
 
