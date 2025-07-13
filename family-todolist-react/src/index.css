@@ -80,6 +80,39 @@ button:focus-visible {
   gap: 2rem; /* gap between componints in this page */
 }
 
+/* --- Shared Header Styles --- */
+.todo-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: #222;
+  color: #fff;
+  padding: 1rem 2rem;
+  border-bottom: 2px solid #333;
+}
+
+.todo-header-actions {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.todo-title {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 1.5rem;
+  margin: 0;
+  color: #fff;
+}
+
+.todo-left {
+  font-size: 1.2rem;
+  font-weight: 500;
+  color: #fff;
+}
+
+/* --- Shared Button Styles --- */
 .defaultPrimaryButton {
   background-color: #05C;
   color: white;

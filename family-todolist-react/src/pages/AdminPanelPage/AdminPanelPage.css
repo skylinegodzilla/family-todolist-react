@@ -1,0 +1,63 @@
+.admin-panel-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem 1rem;
+  overflow-y: auto;
+}
+
+.admin-panel-content {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.admin-search-input {
+  margin-bottom: 1rem;
+  padding: 0.5rem;
+  width: 250px;
+}
+
+.admin-table-wrapper {
+  width: 100%;
+  overflow-x: auto;
+}
+
+.admin-users-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 1rem;
+  background: #313131;
+  border-radius: 0.75rem;
+  overflow: hidden;
+}
+
+.admin-users-table th,
+.admin-users-table td {
+  padding: 0.75rem 1rem;
+  text-align: left;
+}
+
+.admin-users-table th {
+  background: #222;
+  color: #fff;
+}
+
+.admin-users-table tr:nth-child(even) {
+  background: #494949;
+}
+
+.admin-users-table tr:nth-child(odd) {
+  background: #3b3b3b;
+}
+
+/* Keep admin highlight on top of stripes */
+.admin-row-highlight {
+  background: #ffc87f5d !important;
+  font-weight: bold;
+}
+
+.admin-self-note {
+  color: #888;
+  font-size: 0.9em;
+}

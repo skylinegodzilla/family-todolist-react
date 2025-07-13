@@ -8,39 +8,10 @@
 
 }
 
-.todo-header {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 80px; /* define exact height */
-  padding: 0 2rem; /* remove vertical padding to keep height consistent */
-  background-color: #333;
-  border-bottom: 2px solid #ddd;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  z-index: 1000;
-  box-sizing: border-box;
-}
-
-.todo-left {
-  font-weight: bold;
-  font-size: 1.2rem;
-}
-
 .todo-header-left {
   flex: 1;
   font-weight: bold;
   font-size: 1.1rem;
-}
-
-.todo-title {
-  position: absolute;
-  left: 50%;
-  transform: translateX(-50%);
-  font-size: 1.5rem;
-  margin: 0;
 }
 
 .todo-header-center {

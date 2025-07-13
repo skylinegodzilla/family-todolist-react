@@ -1,3 +1,5 @@
+// Data types for the Family To-Do List application
+// todo: check if these types are used in the codebase and remove unused ones
 export type ToDoItem = {
   itemId: number;
   title: string;
@@ -19,3 +21,25 @@ export type ToDoItemRequestDTO = {
   completed: boolean;
   dueDate: string;
 };
+
+// Admin-related types
+export type UserRole = "USER" | "ADMIN";
+
+export interface AdminUserSummary {
+  username: string;
+  email: string;
+  role: UserRole;
+}
+
+// Added this so that in the event that the detail endpoint adds more fields later we dont need to update the codebase
+// insted we can just add the new fields to the AdminUserDetail type.
+// so for now we are just saying that it is the same as AdminUserSummary but in the future it can be extended.
+export type AdminUserDetail = AdminUserSummary;
+
+export interface AdminApiMessage {
+  message: string;
+}
+
+export interface AdminPasswordResetResponse extends AdminApiMessage {
+  newPassword: string;
+}
