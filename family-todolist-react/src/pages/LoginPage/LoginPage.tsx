@@ -43,7 +43,7 @@ function LoginPage() {
         <small>
           bencawley &copy; {currentYear} -{" "}
           <a
-            href="https://your-api-docs-url.com/swagger-ui/index.html"
+            href="http://localhost:8080/swagger-ui/index.html" // TODO: change to actual url when deployed insted of localhost
             target="_blank"
             rel="noreferrer"
           >
