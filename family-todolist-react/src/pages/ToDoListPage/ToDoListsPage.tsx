@@ -1,18 +1,19 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { logout } from "../../services/auth";
 import { useToDoLists } from "../../hooks/useToDoLists";
 import type { ToDoList } from "../../types/types";
+import Header from "../../components/Header";
+
 import "./ToDoListsPage.css";
 
 const ToDoListsPage: React.FC = () => {
+
+  
   // Navigation
   const navigate = useNavigate();
   const { lists, loading, error, createList, updateList, deleteList } = useToDoLists();
 
-  // Fetch user name from the sessionStorage
-  const username =
-    sessionStorage.getItem("username")?.replace(/^./, (c) => c.toUpperCase()) || "User";
+  const storedRole = sessionStorage.getItem("role")?.replace(/^./, c => c.toUpperCase());
 
   // state verables 
   // create list
@@ -25,11 +26,6 @@ const ToDoListsPage: React.FC = () => {
   // Edit list
   const [editingListId, setEditingListId] = useState<number | null>(null); // ID of list we’re editing
 
-  // Logic for loging out
-  const handleLogout = () => {
-    logout();
-    navigate("/login");
-  };
 
   // Logic for creating or editing/updating a list
 const handleSubmit = async () => {
@@ -65,14 +61,8 @@ const handleSubmit = async () => {
 
   return (
     <>
-      <div className="todo-header">
-        <div className="todo-left">Family To-Do List Project</div>
-        <h1 className="todo-title">Your To-Do Lists</h1>
-        <button onClick={handleLogout} className="logoutButton">
-          Logout {username}
-        </button>
-      </div>
-
+      <Header title="Your To-Do Lists" />
+      <div> Wee {storedRole}</div>
       <div className="todo-container">
         {loading && <p className="todo-loading">Loading your to-do lists...</p>}
         {error && <p className="todo-error">⚠️ {error}</p>}

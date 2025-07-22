@@ -2,6 +2,7 @@ import React, { useState, useRef, useEffect } from "react";
 import { useNavigate, useParams, useLocation } from "react-router-dom";
 import { useToDoItems } from "../../hooks/useToDoItems";
 import type { ToDoList, ToDoItem } from "../../types/types";
+import Header from "../../components/Header";
 import "./ListDetailPage.css";
 import { DragDropContext, Droppable, Draggable } from "@hello-pangea/dnd";
 import type { DropResult } from "@hello-pangea/dnd";
@@ -102,14 +103,7 @@ useEffect(() => {
 
   return (
     <>
-      <div className="todo-header">
-        <div className="todo-left">Family To-Do List Project</div>
-        <h1 className="todo-title">{heading}</h1>
-        <div className="todo-header-actions">
-          <button onClick={refresh} className="defaultSecondaryButton">🔄 Refresh</button>
-          <button onClick={() => navigate("/lists")} className="logoutButton">← Back</button>
-        </div>
-      </div>
+      <Header title={heading} />
 
       <div className="todo-container">
 

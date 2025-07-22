@@ -1,8 +1,7 @@
 import { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
 import { useAdminUsers } from "../../hooks/useAdminUsers";
-import { logout } from "../../services/auth";
 import type { UserRole } from "../../types/types";
+import Header from "../../components/Header";
 import "./AdminPanelPage.css";
 
 const ALL_ROLES: UserRole[] = ["USER", "ADMIN"];
@@ -19,21 +18,11 @@ const AdminPanelPage: React.FC = () => {
   } = useAdminUsers();
 
   const [search, setSearch] = useState("");
-  const navigate = useNavigate();
   const selfUsername = sessionStorage.getItem("username");
 
   useEffect(() => {
     fetchUsers();
   }, [fetchUsers]);
-
-  const handleLogout = () => {
-    logout();
-    navigate("/login");
-  };
-
-  const handleBack = () => {
-    navigate("/lists");
-  };
 
   const handleDelete = async (username: string) => {
     if (window.confirm(`Delete user "${username}"? This cannot be undone.`)) {
@@ -88,18 +77,7 @@ const AdminPanelPage: React.FC = () => {
 
   return (
     <>
-      <div className="todo-header">
-        <div className="todo-left">Family To-Do List Project</div>
-        <h1 className="todo-title">Admin Panel</h1>
-        <div className="todo-header-actions">
-          <button onClick={handleBack} className="defaultSecondaryButton">
-            ← Back
-          </button>
-      <button onClick={handleLogout} className="logoutButton">
-        Logout {selfUsername ? selfUsername : ""}
-      </button>
-        </div>
-      </div>
+      <Header title={"Admin Panel"} />
       <div className="todo-container admin-panel-container">
         <div className="admin-panel-content">
           <input

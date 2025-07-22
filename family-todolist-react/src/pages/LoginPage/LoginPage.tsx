@@ -52,6 +52,7 @@ function LoginPage() {
       // Temporarily save the sessionToken in sessionStorage (cleared on browser close).
       sessionStorage.setItem('sessionToken', data.token);
       sessionStorage.setItem("username", username);
+      sessionStorage.setItem('role', data.role);
 
       // Redirect user to the /lists page after successful login.
       navigate('/lists');
